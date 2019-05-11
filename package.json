@@ -8,7 +8,7 @@
   "dependencies": {
     "@google/maps": "^0.4.6",
     "apidocs": "^2017.3.9",
-    "aws-sdk": "^2.1.6",
+    "aws-sdk": "^2.453.0",
     "bcrypt-nodejs": "0.0.3",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.15.0",
@@ -21,19 +21,19 @@
     "express-session": "^1.13.0",
     "joi": "^14.3.1",
     "moment": "^2.22.0",
-    "mongoose": "^4.4.5",
+    "mongoose": "^5.5.7",
     "mongoose-paginate": "^5.0.3",
-    "mongoose-sequence": "^4.0.0",
-    "morgan": "^1.7.0",
+    "mongoose-sequence": "^5.0.1",
+    "morgan": "^1.9.1",
     "nodemailer": "^4.4.2",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^4.0.0",
-    "pdfmake": "^0.1.36",
+    "pdfmake": "^0.1.56",
     "xmlhttprequest": "^1.8.0"
   },
   "devDependencies": {
-    "jest": "^23.6.0",
+    "jest": "^24.8.0",
     "supertest": "^3.3.0"
   }
 }
