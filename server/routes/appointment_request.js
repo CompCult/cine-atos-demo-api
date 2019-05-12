@@ -20,7 +20,15 @@ router.get('/', function(req, res) {
       }
 
       Promise.all(promises).then(function(results) {
-          res.status(200).json(results);
+          res.status(200).json(results.map(result => {
+            const messages = {
+              'Aprovado': 'Esse pedido já foi aprovado',
+              'Rejeitado': 'Esse pedido já foi rejeitado',
+              'Pendente': 'Pedido de participação pendente'
+            };
+
+            return { ...result, message: messages[result.status] };
+        }));
       });
     }
   });
