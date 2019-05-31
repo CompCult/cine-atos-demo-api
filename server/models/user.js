@@ -38,7 +38,15 @@ const userSchema = new mongoose.Schema({
   city: String,
   state: String,
   zipcode: String,
-  points: {
+  level: {
+    type: Number,
+    default: 0
+  },
+  experience: {
+    type: Number,
+    default: 0
+  },
+  coins: {
   	type: Number,
     default: 0
   },
@@ -70,15 +78,4 @@ userSchema.plugin(mongoosePaginate);
 
 const User = mongoose.model('users', userSchema);
 
-function validateUser (user) {
-  const schema = {
-    name: Joi.string().required(),
-    email: Joi.string().required(),
-    password: Joi.string().required(),
-    type: Joi.string().required()
-  };
-
-  return Joi.validate(user, schema);
-};
-
-module.exports = { User, validateUser };
+module.exports = { User };

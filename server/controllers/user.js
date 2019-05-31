@@ -168,7 +168,9 @@ function updateUser (req, res) {
     if (req.body.city) user.city = req.body.city;
     if (req.body.state) user.state = req.body.state;
     if (req.body.zipcode) user.zipcode = req.body.zipcode;
-    if (req.body.points) user.points = req.body.points;
+    if (req.body.coins) user.coins = req.body.coins;
+    if (req.body.level) user.level = req.body.level;
+    if (req.body.experience) user.experience = req.body.experience;
     if (req.body.sec_points) user.sec_points = req.body.sec_points;
     if (req.body.request_limit) user.request_limit = req.body.request_limit;
     if (req.body.banned_until) {
