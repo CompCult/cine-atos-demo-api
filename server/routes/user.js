@@ -1,7 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const validate = require('../middlewares/validate');
-const { validateUser } = require('../models/user');
 const awaitHandler = require('../middlewares/awaitHandler');
 
 const userController = require('../controllers/user')
@@ -49,7 +47,7 @@ router.get('/query/fields', userController.listUsers);
  * @apiDescription
  * Cria um novo usuário.
  */
-router.post('/register', validate(validateUser), awaitHandler(userController.createUser));
+router.post('/register', awaitHandler(userController.createUser));
 
 /**
  * @api {post} /users/account-verification 04. Criar usuário
