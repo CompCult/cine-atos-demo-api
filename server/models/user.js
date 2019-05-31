@@ -5,6 +5,8 @@ const autoInc = require('mongoose-sequence')(mongoose);
 const Joi = require('joi');
 const crypto = require('crypto');
 
+const { USER_ROLE, ADMIN_ROLE } = require('../constants');
+
 const userSchema = new mongoose.Schema({
   _id: Number,
   name: {
@@ -20,6 +22,7 @@ const userSchema = new mongoose.Schema({
   },
   type: {
     type: String,
+    enum: [USER_ROLE, ADMIN_ROLE],
     required: true
   },
   institution: String,

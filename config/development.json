@@ -1,3 +1,4 @@
 {
-    "db": "mongodb://localhost/inovarg"
+    "db": "mongodb://localhost/inovarg",
+    "jwtPrivateKey": "secret123"
 }

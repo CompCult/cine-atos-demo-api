@@ -1,6 +1,7 @@
 const bcrypt  = require('bcryptjs');
 const _ = require('lodash');
 const config = require('config');
+const jwt = require('jsonwebtoken');
 
 const { User, validateUser } = require('../models/user.js');
 const Uploads = require('../upload.js');
@@ -221,7 +222,8 @@ function authenticate (req, res) {
           res.status(400).send(err);
         } else {
           if (result) {
-            res.status(200).json(user);
+            const token = jwt.sign({ id: user._id, role: user.type }, config.get('jwtPrivateKey'));
+            res.status(200).json({ ...user, token });
           } else {
             res.status(401).json('Senha incorreta.');
           }

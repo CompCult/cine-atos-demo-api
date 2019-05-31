@@ -1,4 +1,5 @@
 {
     "db": "MONGO_PATH",
-    "accountVerificationURL": "ACCOUNT_VERIFICATION_URL"
+    "accountVerificationURL": "ACCOUNT_VERIFICATION_URL",
+    "jwtPrivateKey": "JWT_PRIVATE_KEY"
 }
