@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
-
+const auth = require('../middlewares/auth');
+const isAdmin = require('../middlewares/isAdmin');
 var Mission = require('../models/mission.js');
 var MissionAnswer = require('../models/mission_answer.js');
 
@@ -101,7 +102,7 @@ var wasMissionAnswered = async function(mission, user) {
 }
 
 //Create
-router.post('/', function(req, res) {
+router.post('/', [auth, isAdmin], function(req, res) {
   var mission              = new Mission();
   mission.name             = req.body.name;
   mission._user            = req.body._user;
@@ -136,7 +137,7 @@ router.post('/', function(req, res) {
 });
 
 // Update
-router.put('/:mission_id', function(req, res) {
+router.put('/:mission_id', [auth, isAdmin], function(req, res) {
   Mission.findById(req.params.mission_id, function(err, mission) {
     if (req.body.name) mission.name                       = req.body.name;
     if (req.body.description) mission.description         = req.body.description;
@@ -172,7 +173,7 @@ router.put('/:mission_id', function(req, res) {
 });
 
 // Delete
-router.delete('/:mission_id', function(req, res) {
+router.delete('/:mission_id', [auth, isAdmin], function(req, res) {
   Mission.remove({ _id: req.params.mission_id }, function(err) {
     if (err) {
       res.status(400).send(err);
