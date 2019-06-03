@@ -223,7 +223,7 @@ function authenticate (req, res) {
         } else {
           if (result) {
             const token = jwt.sign({ id: user._id, role: user.type }, config.get('jwtPrivateKey'));
-            res.status(200).json({ ...user, token });
+            res.status(200).json({ ...user._doc, token });
           } else {
             res.status(401).json('Senha incorreta.');
           }

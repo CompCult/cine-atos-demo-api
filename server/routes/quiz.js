@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
+const auth = require('../middlewares/auth');
+const isAdmin = require('../middlewares/isAdmin');
 var Quiz = require('../models/quiz.js');
 var QuizAnswer = require('../models/quiz_answer.js');
 
@@ -95,7 +97,7 @@ router.get('/query/fields', function(req, res) {
 });
 
 //Create
-router.post('/', function(req, res) {
+router.post('/', [auth, isAdmin], function(req, res) {
   var quiz             = new Quiz();
   quiz.title           = req.body.title;
   quiz._user           = req.body._user;
@@ -130,7 +132,7 @@ router.post('/', function(req, res) {
 });
 
 // Update
-router.put('/:quiz_id', function(req, res) {
+router.put('/:quiz_id', [auth, isAdmin], function(req, res) {
   Quiz.findById(req.params.quiz_id, function(err, quiz) {
     if(req.body.title) quiz.title                   = req.body.title;
     if(req.body.description) quiz.description       = req.body.description;
@@ -165,7 +167,7 @@ router.put('/:quiz_id', function(req, res) {
 });
 
 // Delete
-router.delete('/:quiz_id', function(req, res) {
+router.delete('/:quiz_id', [auth, isAdmin], function(req, res) {
   Quiz.remove({ _id: req.params.quiz_id }, function(err) {
     if (err) {
       res.status(400).send(err);
